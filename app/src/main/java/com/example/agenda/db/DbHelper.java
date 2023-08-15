@@ -13,7 +13,7 @@ public class DbHelper  extends SQLiteOpenHelper {
 
         private static final String DATABASE_NOMBRE = "agenda.db";
 
-        private static final String TABLE_CONTACTO = "t_contactos";
+         static final String TABLE_CONTACTO = "t_contactos";
 
     public DbHelper(Context context) {
         super();
