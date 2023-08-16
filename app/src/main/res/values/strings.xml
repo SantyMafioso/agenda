@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">agenda</string>
     <string name="menu_nuevo">Nuevo Registro</string>
+    <item name="menuNuevo" type="id">menuNuevo</item>
 </resources>

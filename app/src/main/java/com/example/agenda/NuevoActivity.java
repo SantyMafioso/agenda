@@ -2,16 +2,18 @@ package com.example.agenda;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.view.Menu;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import android.view.MenuItem;
 import com.example.agenda.db.DbContactos;
 
-public class MainActivity2 extends AppCompatActivity {
+public class NuevoActivity extends AppCompatActivity {
 
     EditText txtNombre, txtTelefono, txtCorreoElectronico;
     Button btnGuarda;
@@ -19,7 +21,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_nuevo);
 
         txtNombre = findViewById(R.id.txtNombre);
         txtTelefono = findViewById(R.id.txtTelefono);
@@ -29,14 +31,14 @@ public class MainActivity2 extends AppCompatActivity {
         btnGuarda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DbContactos dbContactos = new DbContactos(MainActivity.this);
+                DbContactos dbContactos = new DbContactos(NuevoActivity.this);
                 long id = dbContactos.insertarContactos(txtNombre.getText().toString(),txtTelefono.getText().toString(),txtCorreoElectronico.getText().toString());
 
                 if (id > 0) {
-                    Toast.makeText(MainActivity.this, "REGISTRO AGREGADO", Toast.LENGTH_LONG).show();
+                    Toast.makeText(NuevoActivity.this, "REGISTRO AGREGADO", Toast.LENGTH_LONG).show();
                     limpiar();
                 }else{
-                    Toast.makeText(MainActivity.this, "ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
+                    Toast.makeText(NuevoActivity.this, "ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -52,4 +54,24 @@ public class MainActivity2 extends AppCompatActivity {
         return true;
 
     }
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.menuNuevo:
+                nuevoRegistro();
+                return  true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+    public void  nuevoRegistro(){
+        Intent intent = new Intent(this, NuevoActivity.class);
+        startActivity(intent);
+    }
 }
+
+
+
+
+
+

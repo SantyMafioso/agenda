@@ -15,9 +15,6 @@ public class DbHelper  extends SQLiteOpenHelper {
 
          static final String TABLE_CONTACTO = "t_contactos";
 
-    public DbHelper(Context context) {
-        super();
-    }
 
     public void onCreate(SQLiteDatabase SQLiteDatabase){
             SQLiteDatabase.execSQL("CREATE TABLE " + TABLE_CONTACTO + "(" +
