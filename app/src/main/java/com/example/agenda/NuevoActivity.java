@@ -55,13 +55,11 @@ public class NuevoActivity extends AppCompatActivity {
 
     }
     public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.menuNuevo:
-                nuevoRegistro();
-                return  true;
-            default:
-                return super.onOptionsItemSelected(item);
-
+        if (item.getItemId() == R.id.menuNuevo){
+            nuevoRegistro();
+            return  true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
     }
     public void  nuevoRegistro(){
